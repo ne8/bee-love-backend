@@ -1,0 +1,30 @@
+version: '3'
+services:
+
+  #  beelove:
+  #    build: .
+  #    container_name: beelove
+  #    depends_on:
+  #    - bee-love-database
+  #    ports:
+  #    - "8080:8080"
+
+  bee-love-database:
+    image: postgres:11.1
+    container_name: bee-love-database
+    ports:
+    - "5431:5432"
+
+  authorization-server:
+    image: authorization-server
+    container_name: authorization-server
+    ports:
+    - "8081:8080"
+    depends_on:
+    - authorization-server-db
+
+  authorization-server-db:
+    container_name: authorization-server-db
+    image: postgres:11.1
+    ports:
+    - "5432:5432"
