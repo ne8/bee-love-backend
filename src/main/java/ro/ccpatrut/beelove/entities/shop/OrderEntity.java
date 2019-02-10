@@ -1,17 +1,15 @@
 package ro.ccpatrut.beelove.entities.shop;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "orders", schema = "beelove")
-@Getter
-@Setter
-@Builder
+@Data
+@ToString
 public class OrderEntity {
 
     @Id
@@ -39,6 +37,6 @@ public class OrderEntity {
     @Column(name = "full_address", nullable = false)
     private String fullAddress;
 
-    @OneToMany(mappedBy = "orderEntity", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "orderEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ProductOrderEntity> productOrderEntityList;
 }

@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS beelove.product_orders(
     id            serial PRIMARY KEY,
     name          VARCHAR(255) NOT NULL,
     quantity       VARCHAR(255) NOT NULL,
-    order_id      VARCHAR(255)
+    order_id      serial
 );
 
 -- --
@@ -228,13 +228,15 @@ values ('Miere de salcam',
         1,
         'assets/images/products/miere-salcam.jpg',
         'Tonic general, calmeaza tusea, folosita in tratarea nevrozelor, pentru copii, pentru intarirea sistemului imunitar si pentru gravide');
--- INSERT INTO beelove.products (name, price, quantity, pathToImage, description)
--- values ('Miere de tei',
---         30,
---         1,
---         'assets/images/products/miere-tei.jpg',
---         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue.');
--- --
+
+
+INSERT INTO beelove.products (name, price, quantity, pathToImage, description)
+values ('Miere de tei',
+        30,
+        1,
+        'assets/images/products/miere-tei.jpg',
+        'Mierea crudă de tei are următoarele beneficii: calmează sistemul nervos, combate insomnia, tratează răceala și calmează bronșitele, reduce spasmul digestiv și pulmonar, stimulează digestia');
+--
 INSERT INTO beelove.products (name, price, quantity, pathToImage, description)
 values ('Pastura',
         30,

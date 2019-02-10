@@ -2,8 +2,8 @@ package ro.ccpatrut.beelove.service;
 
 import ro.ccpatrut.beelove.dto.shop.OrderDTO;
 
-public interface CheckoutService {
+import java.util.List;
 
-    void doCheckout(OrderDTO orderDTO);
-
+public interface OrderService {
+    List<OrderDTO> getOrders();
 }

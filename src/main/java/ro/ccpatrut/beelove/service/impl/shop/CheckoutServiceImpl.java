@@ -20,6 +20,7 @@ import java.util.List;
 @Service
 @Transactional
 public class CheckoutServiceImpl implements CheckoutService {
+
     @Autowired
     private OrderRepository orderRepository;
 
@@ -36,17 +37,22 @@ public class CheckoutServiceImpl implements CheckoutService {
         final AddressDTO addressDTO = orderDTO.getAddress();
         final UserDTO userDTO = orderDTO.getUserData();
 
-        final OrderEntity orderEntity = OrderEntity.builder()
-                .firstName(userDTO.getFirstName()).lastName(userDTO.getLastName())
-                .emailAddress(userDTO.getEmailAddress())
-                .city(addressDTO.getCity())
-                .postalCode(addressDTO.getPostalCode())
-                .phoneNumber(addressDTO.getPhoneNumber())
-                .fullAddress(addressDTO.getFullAddress())
-                .build();
+        final OrderEntity orderEntity = new OrderEntity();
+        //user
+        orderEntity.setFirstName(userDTO.getFirstName());
+        orderEntity.setLastName(userDTO.getLastName());
+        orderEntity.setEmailAddress(userDTO.getEmailAddress());
+
+        //address
+        orderEntity.setCity(addressDTO.getCity());
+        orderEntity.setPostalCode(addressDTO.getPostalCode());
+        orderEntity.setPhoneNumber(addressDTO.getPhoneNumber());
+        orderEntity.setFullAddress(addressDTO.getFullAddress());
+
         orderEntity.setProductOrderEntityList(this.mapProducts(orderDTO.getProducts(), orderEntity));
         this.orderRepository.save(orderEntity);
     }
+
 
     private List<ProductOrderEntity> mapProducts(final List<ProductOrderDTO> productOrderDTOList,
                                                  final OrderEntity orderEntity) {

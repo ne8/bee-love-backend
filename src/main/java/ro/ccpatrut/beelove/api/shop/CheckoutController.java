@@ -22,9 +22,10 @@ public class CheckoutController {
     @Autowired
     private CheckoutService checkoutService;
 
+
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> doCheckout(@Valid @RequestBody final OrderDTO orderDTO) {
-        log.info(orderDTO.toString());
+        log.debug(orderDTO.toString());
         this.checkoutService.doCheckout(orderDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

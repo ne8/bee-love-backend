@@ -48,7 +48,8 @@ public class SecurityConfiguration extends ResourceServerConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/about").access("permitAll()")
                 .antMatchers(HttpMethod.GET, "/products").access("permitAll()")
                 .antMatchers(HttpMethod.GET, "/posts").access("permitAll()")
-                .antMatchers(HttpMethod.GET, "/checkout").access("permitAll()");
+                .antMatchers(HttpMethod.POST, "/checkout").access("permitAll()")
+                .antMatchers(HttpMethod.GET, "/orders").access("permitAll()");
     }
 
     @Bean
